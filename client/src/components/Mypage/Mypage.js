@@ -39,7 +39,7 @@ export default function MyPage () {
   // 4. 렌더링 : MyPage 접속한 경우, 새로운 article이 생길 경우 -> 회원 정보 조회 GET으로 가져오기
 
   // axios로 회원 정보 조회(유저 정보 및 아티클)
-  // http://localhost:4000/user/:userId
+  // http://server.bookdam.link/user/:userId
 
   const userState = useSelector(state => state.userInfoReducer);
   const { userInfo } = userState;
@@ -64,10 +64,12 @@ export default function MyPage () {
   const [ref, inView] = useInView(); // react-intersection-observer -> div가 viewport에 보여질 때 inView 값이 true
   const history = useHistory();
 
-  // 회원정보수정 버튼 누르면 회원정보수정 모달이 나오는 함수
+  // 회원정보수정 모달을 닫는 함수
   const closeNoticeModal = () => {
     setIsOpenNoticeModal(!isOpenNoticeModal);
   };
+  
+  // 회원정보수정 버튼 누르면 회원정보수정 모달이 나오는 함수
   const userInfoModifyBtnHandler = () => {
     if (userInfo.userId === 'guest') {
       setErrorMessage('로그인 후 이용하세요');
@@ -76,7 +78,7 @@ export default function MyPage () {
       setIsOpenModifyModal(!isOpneModifyModal);
     }
   };
-  // 회원정보수정 모달 창을 닫는 버튼(x) 함수
+  // 회원정보수정 모달 안에 있는 닫기(x)버튼 함수
   const closeUserInfoModify = () => {
     setIsOpenModifyModal(!isOpneModifyModal);
   };
@@ -85,7 +87,6 @@ export default function MyPage () {
   const openSentenceModalHandler = (el) => {
     setIsOpenSentenceModal(!isOpenSentenceModal);
     if (isOpenSentenceModal) {
-      console.log('a');
       document.body.style.overflow = 'unset';
     } else {
       document.body.style.overflow = 'hidden';
@@ -115,7 +116,7 @@ export default function MyPage () {
         setLoading(true);
         setTimeout(() => {
           axios
-            .get(`http://localhost:4000/user/${userInfo.id}?page=${page}`,
+            .get(`http://server.bookdam.link/user/${userInfo.id}?page=${page}`,
               {
                 headers: { 'Content-Type': 'application/json' }
               })
@@ -162,6 +163,11 @@ export default function MyPage () {
     );
   });
 
+  // 내 정보(닉네임, 유저이미지)를 업데이트 하는 함수
+  const updateMyInfo = (data) => {
+    setMyUserInfo(data);
+  }
+
   return (
     <>
       <MyPageWholeContainer>
@@ -172,6 +178,7 @@ export default function MyPage () {
                 closeUserInfoModify={closeUserInfoModify}
                 myUserInfo={myUserInfo}
                 setIsOpenModifyModal={setIsOpenModifyModal}
+                updateUserInfo={updateMyInfo}
               />
             : null}
           {isOpenSentenceModal
@@ -208,7 +215,6 @@ export default function MyPage () {
               >
                 회원정보수정
               </UserModifyBtn>
-
             </UserInfoSection>
           </UserInfoContainer>
           <ArticleListContainer>

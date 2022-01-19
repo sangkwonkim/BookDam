@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import {
   LoginModalWholeBackground,
+  LoginModalWholeContainer,
   LoginModalWrapper,
   LoginCloseButton,
   LoginModalContainer,
@@ -51,7 +52,7 @@ export const LoginModal = ({
       await axios({
         withCredentials: true,
         method: 'post',
-        url: 'http://localhost:4000/user/login',
+        url: 'http://server.bookdam.link/user/login',
         headers: {
           authorization: `Bearer: ${process.env.ACCESS_SECRET}`,
           'Content-Type': 'application/json'
@@ -88,23 +89,26 @@ export const LoginModal = ({
   return (
     <div>
       <LoginModalWholeBackground onClick={handleCloseLoginModal}>
-        <LoginModalWrapper onClick={(e) => e.stopPropagation()}>
-          <LoginModalHeader>
-            <LoginModalLeft />
-            <LoginCloseButton onClick={handleCloseLoginModal}>&times;</LoginCloseButton>
-          </LoginModalHeader>
-          <LoginModalContainer>
-            <LoginTitle>BookDam</LoginTitle>
-            <InputContainer>
-              <InputId onChange={handleInputId} />
-              <InputPW onChange={handleInputPW} />
-              <ErrorMessage>{errorMessage}</ErrorMessage>
-              <LoginThemeBtn onClick={handleLogin}>로그인</LoginThemeBtn>
-              <Message>아직 아이디가 없으신가요? 👇</Message>
-              <LoginThemeBtn handleCloseSignupModal={handleCloseSignupModal} onClick={handleSignupModal}>회원가입</LoginThemeBtn>
-            </InputContainer>
-          </LoginModalContainer>
-        </LoginModalWrapper>
+        <LoginModalWholeContainer>
+          <LoginModalWrapper onClick={(e) => e.stopPropagation()}>
+              <LoginModalHeader>
+                <LoginModalLeft />
+                <LoginCloseButton onClick={handleCloseLoginModal}>&times;</LoginCloseButton>
+              </LoginModalHeader>
+              <LoginModalContainer>
+                <LoginTitle>BookDam</LoginTitle>
+                <InputContainer>
+                  <InputId onChange={handleInputId} />
+                  <InputPW onChange={handleInputPW} />
+                  <ErrorMessage>{errorMessage}</ErrorMessage>
+                  <LoginThemeBtn onClick={handleLogin}>로그인</LoginThemeBtn>
+                  <Message>아직 아이디가 없으신가요? 👇</Message>
+                  <LoginThemeBtn handleCloseSignupModal={handleCloseSignupModal} onClick={handleSignupModal}>회원가입</LoginThemeBtn>
+                </InputContainer>
+              </LoginModalContainer>
+            </LoginModalWrapper>
+        </LoginModalWholeContainer>
+
       </LoginModalWholeBackground>
     </div>
   );
