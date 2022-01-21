@@ -6,20 +6,14 @@ import {
   IntroWholeContainer,
   SectionWrapperOne,
   SectionWrapperTwo,
-  SectionWrapperThree,
-  SectionContainer,
-  SectionInfoContainer,
-  ImageContainer,
-  TextContainer,
-  TextHeaderContainer,
-  ButtonWrapper,
-  ButtonContainer,
-  ButtonsInIntro
+  SectionWrapperThree
 } from './IntroWrapperStyle';
 import { LoginModal } from '../LoginModal/LoginModal';
 import { SignupModal } from '../Signup/SignupModal';
 import { GuestLoginAction, LogoutAction } from '../../actions/UserInfoAction';
-import { Section1 } from '../Landing/Section1/SectionOne'
+import { Section1 } from '../Landing/Section1/SectionOne';
+import { Section2 } from '../Landing/Section2/Section2';
+import { Section3 } from '../Landing/Section3/SectionThree';
 
 export const IntroWrapper = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
@@ -93,7 +87,7 @@ export const IntroWrapper = () => {
           setIsOpenLoginModal(false);
           document.body.style.overflow = 'unset'; // 스크롤 방지 해제
         }
-        history.push('/feedpage');
+        history.push('/feedPage');
       });
   };
 
@@ -112,39 +106,19 @@ export const IntroWrapper = () => {
               handleLoginModal={handleLoginModal}
             />
           : null}
+
         <SectionWrapperOne>
-        <Section1/>
+          <Section1 />
         </SectionWrapperOne>
 
         <SectionWrapperTwo>
-          <SectionContainer>
-            <SectionInfoContainer>{/* SectionInfo2 */}
-              <TextContainer>로그인 성공여부{isLogin ? 'true' : 'false'}</TextContainer>
-              <ImageContainer>Text2</ImageContainer>
-            </SectionInfoContainer>
-          </SectionContainer>
+          <Section2 />
         </SectionWrapperTwo>
 
         <SectionWrapperThree>
-          <SectionContainer>
-            <SectionInfoContainer>{/* SectionInfo3 */}
-              <ImageContainer>Image3</ImageContainer>
-              <TextContainer>Text3</TextContainer>
-            </SectionInfoContainer>
-            <ButtonWrapper>
-              <ButtonContainer>
-                <Link to='/feedpage'>
-                  {isLogin
-                    ? <ButtonsInIntro>입장하기</ButtonsInIntro>
-                    : <ButtonsInIntro onClick={guestLoginHandelr}>둘러보기</ButtonsInIntro>}
-                </Link>
-                {isLogin
-                  ? null
-                  : <ButtonsInIntro onClick={handleLoginModal}>로그인</ButtonsInIntro>}
-              </ButtonContainer>
-            </ButtonWrapper>
-          </SectionContainer>
+          <Section3 isLogin={isLogin} guestLoginHandelr={guestLoginHandelr} handleLoginModal={handleLoginModal} />
         </SectionWrapperThree>
+
       </IntroWholeContainer>
     </>
   );

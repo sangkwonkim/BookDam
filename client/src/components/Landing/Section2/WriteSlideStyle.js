@@ -1,21 +1,19 @@
-import styled, { createGlobalStyle} from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/bundle';
+import styled from 'styled-components';
+import write from '../../../assets/images/introgif/write.gif';
 
 // Write 전체 컨테이너
 export const WriteWholeContainer = styled.div`
-  position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
   height: 750px;
   width: 100%;
-  border: 2px solid grey;
 
-  @media (max-width: 500px) {
-    width: 100%;
+  @media screen and (max-width: 650px) {
+    display: none;
   } 
 `;
 
@@ -25,23 +23,54 @@ export const TypoSection = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 640px;
-  border: 1px solid green;
+  width: 570px;
+
+  .fadein {
+    /* font-size: 20px; */
+    position: relative;
+    overflow: hidden;
+    animation: fadein 3s ease-in-out;
+    animation-delay: 1s;
+    -moz-animation: fadein 3s ease-in-out; /* Firefox */
+    -webkit-animation: fadein 3s ease-in-out; /* Safari and Chrome */
+    -o-animation: fadein 3s ease-in-out; /* Opera */
+  }
+    @keyframes fadein {
+      0% {
+      opacity: 0;
+      transform: translateY(20px);
+      }
+      100% {
+      opacity: 1;
+      transform: none;
+      }
+    }
+  
+  @media screen and (max-width: 650px) {
+    display: none;
+  }
 `;
 
-// Write 타이포그래픽 랩퍼
+// 타이포그래픽 랩퍼
 export const WriteTypoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 400px;
   height: 150px;
   margin: 10px 0 30px 0;
-  /* border: 1px solid grey; */
+
+  @media screen and (max-width: 650px) {
+    align-items: center;
+    justify-content: flex-start;
+  }
 `;
 
-// Write 타이포그래픽
+// 타이포
 export const WriteTypo = styled.h1`
   width: 80%;
   max-width: 480px;
-  /* margin: 1.6em 2em; */
   font-family: 'Playfair Display', serif;
   font-size: 4em;
   line-height: 1.4em;
@@ -66,40 +95,56 @@ export const WriteTypo = styled.h1`
   *::selection {
     background: rgba(226,145,230,.2);
   }
+
+  @media screen and (max-width: 650px) {
+    width: 60%;
+    font-size: 2.5em;
+  }
 `;
 
-// Write 소개
+// 소개
 export const WriteIntroduction = styled.div`
   width: 400px;
-  height: 100px;
-  /* border: 1px solid grey; */
 
-  .fadein {
-    font-size: medium;
-    position: relative;
-    overflow: hidden;
-    animation: fadein 3s ease-in-out;
+  @media screen and (max-width: 650px) {
+    font-size: 0.8em;
   }
-    @keyframes fadein {
-      0% {
-      opacity: 0;
-      transform: translateY(20px);
-      }
-      100% {
-      opacity: 1;
-      transform: none;
-      }
-    }
 `;
 
 // 기능 섹션
 export const SkillSection = styled.div`
   display: flex;
-  width: 340px;
-  border: 1px solid green;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 410px;
+  margin-right: 60px;
+
+  @media screen and (max-width: 650px) {
+    display: none;
+  }
 `;
 
 // 기능 시현 GIF
-export const SkillGIF = styled.div`
+export const FeatureGifWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  height: 500px;
+  border-radius: 40px;
+  background-image: url(${write});
+  background-size: 240px 490px;
+  background-position-y: .6rem;
+  background-position-x: .3rem;
+  background-repeat: no-repeat;
 
+  @media screen and (max-width: 650px) {
+    width: 200px;
+  }
+`;
+
+// 아이폰 목업 img
+export const PhoneFrame = styled.img`
+  width: 100%;
+  height: 100%;
 `;

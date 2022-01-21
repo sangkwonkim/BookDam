@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+// const saltRounds = 10;
 const { User: UserModel, Article: ArticleModel, Follow: FollowModel } = require('../models');
 
 module.exports = {
@@ -27,6 +27,7 @@ module.exports = {
     }
     delete userData.dataValues.password;
     const accessToken = jwt.sign(user, process.env.ACCESS_SECRET, { expiresIn: '24h' });
+    res.location('https://bookdam.link/feedPage');
     res.cookie('jwt', accessToken, {
       maxAge: 24 * 60 * 60 * 1000,
       sameSite: 'none',
@@ -49,6 +50,7 @@ module.exports = {
     });
     if (!findUser) return res.status(400).json({ message: '로그아웃에 실패했습니다.' });
     else {
+      // res.location('https://bookdam.link/')
       res.clearCookie('jwt').status(200).json({ message: '로그아웃 되었습니다.' });
     }
   },
@@ -191,7 +193,15 @@ module.exports = {
       }]
     });
     if (Number.isNaN(findArtilces.count)) return res.status(400).json({ message: 'failure' });
-    res.status(200).json({ message: 'success', userInfo: findUser, follow, articleData: findArtilces, isfollow: isfollow.count });
+    // res.location('/') mypage or userpage/:username 이 들어가는데... 구분하는 방법에 대해서 고민해보기
+
+    if (id === decodedData.id) {
+      res.location('https://bookdam.link/myPage');
+      res.status(200).json({ message: 'success', userInfo: findUser, follow, articleData: findArtilces });
+    } else {
+      res.location(`https://bookdam.link/userPage/${findUser.userId}`);
+      res.status(200).json({ message: 'success', userInfo: findUser, follow, articleData: findArtilces, isfollow: isfollow.count });
+    }
   },
   patch: (req, res) => { // test done
     const id = parseInt(req.params.user_Id, 10);
@@ -262,6 +272,7 @@ module.exports = {
           where: { id: id }
         })
           .then((result) => {
+            // res.location('/mypage')
             res.status(201).json({ message: 'success', userInfo: result });
           })
           .catch((error) => {

@@ -27,11 +27,16 @@ import {
 } from './SentenceModalStyle';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import example from '../../assets/images/defaultUserImage.png';
-import { ArticleNoticeModal } from '../../components/NoticeModal/ArticleNoticeModal/ArticlesNoticeModal';
+import { ArticleNoticeModal } from '../NoticeModal/ArticleNoticeModal/ArticlesNoticeModal';
 
 axios.defaults.withCredentials = true;
 
-export const SetenceModal = ({ openSentenceModalHandler, setIsOpenSentenceModal }) => {
+export const SentenceModal = ({
+  openSentenceModalHandler,
+  setIsOpenSentenceModal,
+  updateMyArticles,
+  myArticleList
+}) => {
   const userState = useSelector(state => state.userInfoReducer);
   const { userInfo } = userState;
   const history = useHistory();
@@ -48,11 +53,11 @@ export const SetenceModal = ({ openSentenceModalHandler, setIsOpenSentenceModal 
   // 삭제 버튼을 눌렀을 경우 열리는 노티스 모달 여는 함수
   const openArticleNoticeHandler = () => {
     setIsOpenArticleNotice(!isOpenArticleNotice);
-  }
+  };
 
   const sendToEditPage = () => {
     history.push({
-      pathname: '/editpage',
+      pathname: '/editPage',
       state: {
         myArticleInfo: {
           myArticleInfo
@@ -63,13 +68,37 @@ export const SetenceModal = ({ openSentenceModalHandler, setIsOpenSentenceModal 
 
   // 아티클을 삭제 하는 함수
   const deleteArticle = () => {
+    const tempMyArticleInfo = {
+      id: myArticleInfo.id,
+      book_Title: myArticleInfo.book_Title,
+      book_Author: myArticleInfo.book_Author,
+      book_Publisher: myArticleInfo.book_Publisher,
+      sentence: myArticleInfo.sentence,
+      comment: myArticleInfo.comment,
+      createdAt: myArticleInfo.createdAt
+    };
     axios
-      .delete(`https://server.bookdam.link/article/${userInfo.id}?article_Id=${myArticleInfo.id}`)
+      .delete(`https://server.bookdam.link/article/${userInfo.id}?article_Id=${myArticleInfo.id}`,
+        {
+          articleInfo: tempMyArticleInfo
+        },
+        {
+          headers: { 'Content-Type': 'application/json' }
+        }
+      )
       .then((data) => {
-        document.location.reload();
+        console.log(data);
+        if (data.status === 200) {
+          setIsOpenArticleNotice(false);
+          setIsOpenSentenceModal(false);
+          updateMyArticles(
+            myArticleList.filter(
+              article => article.id !== data.config.articleInfo.id
+            ));
+        }
       })
       .catch((err) => {
-      
+
       });
   };
 
@@ -103,9 +132,9 @@ export const SetenceModal = ({ openSentenceModalHandler, setIsOpenSentenceModal 
                       deleteArticle={deleteArticle}
                     />
                   : null}
-                  <Delete onClick={openArticleNoticeHandler}>
-                    삭제
-                  </Delete>
+                <Delete onClick={openArticleNoticeHandler}>
+                  삭제
+                </Delete>
               </EditMenuWrapper>
               : null}
             <UserInfo>

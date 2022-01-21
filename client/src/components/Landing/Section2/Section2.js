@@ -8,37 +8,43 @@ import {
   Section2WholeContainer,
   StyledSwiper,
   StyledSlide
-} from './Section_2 SliderStyle';
+} from './Section2Style';
 import { WriteSlide } from './WriteSlide';
+import { WriteMobileSlide } from './WriteMobileSlide';
+import { ShareSlide } from './ShareSlide';
+import { ShareMobileSlide } from './ShareMobileSlide';
+import { RememberSlide } from './RememberSlide';
+import { RememberMobileSlide } from './RememberMobileSlide';
 
 SwiperCore.use([Navigation]);
 
-export const SectionTwoSlider = () => {
-  
+export const Section2 = () => {
   return (
     <>
       <Section2WholeContainer>
         <StyledSwiper
           slidesPerView={1}
           spaceBetween={30}
-          loop={true}
+          loop
+          grabCursor
           navigation
-          grabCursor={true}
         >
           <SwiperSlide>
             <StyledSlide>
-              Slide 1
               <WriteSlide />
+              <WriteMobileSlide />
             </StyledSlide>
           </SwiperSlide>
           <SwiperSlide>
             <StyledSlide>
-              Slide 2
+              <ShareSlide />
+              <ShareMobileSlide />
             </StyledSlide>
           </SwiperSlide>
           <SwiperSlide>
             <StyledSlide>
-              Slide 3
+              <RememberSlide />
+              <RememberMobileSlide />
             </StyledSlide>
           </SwiperSlide>
         </StyledSwiper>

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const MyPageWholeContainer = styled.div`
-  /* padding-top: 50px; */
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 1px solid #e9ecef;
   overflow: hidden;
   position: relative;
@@ -9,7 +12,7 @@ export const MyPageWholeContainer = styled.div`
   /* background-color: whitesmoke; */
 
   @media (max-width: 500px) {
-    width: 100%;
+    width: 100vw;
     /* padding-top: 5px; */
   }  
 `;
@@ -18,10 +21,13 @@ export const MypageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding-top: 30px;
+  width: 970px;
+  margin: 0px;
+  
   /* border: 1px solid black; */
-
+  
   @media (max-width: 500px) {
     width: 100%;
   }
@@ -30,30 +36,46 @@ export const MypageContainer = styled.div`
 // UserInfo 영역
 export const UserInfoContainer = styled.div`
   display: flex;
-  width: 970px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 72%;
   height: 90px;
-  padding: 20px 0 20px 0;
+  margin: 0;
+  padding: 0 0 0 80px;
   background-color: white;
-  /* border: 1px solid skyblue; */
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  > .space {
+    margin: 0 10px 0 10px;
+    @media (max-width: 500px) {
+      display: none;
+    }
 
+  }
   @media (max-width: 500px) {
-    width: 100%;
-    padding: 0;
+    width: 355px;
   }
 `;
 
 export const UserImgSection = styled.div`
-  width: 90px;
-  height: 100%;
-  margin-left: 24px;
-  margin-right: 15px;
-  /* border: 1px solid black; */
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+
+  @media (max-width: 500px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 export const UserImage = styled.img`
   border: 1px solid #E6E6E6;
   border-radius: 50%;
-  /* border: none; */
   height: 100%;
   width: 100%;
 `;
@@ -65,7 +87,6 @@ export const UserInfoSection = styled.div`
   flex-direction: column;
   flex-wrap: nowrap;
   margin-left: 25px;
-  /* border: 1px solid blue; */
 `;
 
 export const NickNameFollowSection = styled.div`
@@ -75,7 +96,6 @@ export const NickNameFollowSection = styled.div`
   flex-direction: column;
   flex-wrap: nowrap;
   margin-bottom: 5px;
-  /* border: 1px solid red; */
 `;
 
 export const NickName = styled.div`
@@ -88,7 +108,10 @@ export const NickName = styled.div`
   font-size: x-large;
   padding-left: 5px;
   font-weight: 500;
-  /* border: 1px solid green; */
+
+  @media (max-width: 500px) {
+    font-size: larger;
+  }
 `;
 
 export const FollowContainer = styled.div`
@@ -98,7 +121,10 @@ export const FollowContainer = styled.div`
   padding-left: 5px;
   font-size: medium;
   font-weight: 500;
-  /* border: 1px solid orange; */
+
+  @media (max-width: 500px) {
+    font-size: smaller;
+  }
 `;
 
 export const Follow = styled.div`
@@ -109,7 +135,6 @@ export const Follow = styled.div`
   justify-content: flex-start;
   align-items: center;
   text-align: start;
-  /* border: 1px solid yellow; */
 `;
 
 export const FollowCount = styled.span`
@@ -127,7 +152,6 @@ export const Follower = styled.div`
   justify-content: flex-start;
   align-items: center;
   text-align: start;
-  /* border: 1px solid black; */
 `;
 
 export const FollowerCount = styled.span`
@@ -139,20 +163,28 @@ export const FollowerCount = styled.span`
 `;
 
 export const UserModifyBtn = styled.button`
-  width: 100% ;
+  width: 230px;
   height: 40%;
-  border: 1px solid #12e272;
-  border-radius: 5px;
-  background-color: rgba(0,0,0,0);
-  color: #12e272;
-  padding: 0ch;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  background-color: #1dc078;
+  color: white;
   cursor: pointer;
-  
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  box-sizing: border-box;
+  line-height: 1.5;
+  border: 2px solid #1dc078;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: normal;
+  padding: 3px;
+  text-align: center;
+  white-space: nowrap;
+
   @media (max-width: 500px) {
-    cursor: none;
+    width: 200px;
+    font-size: small;
+
   }
 `;
 
@@ -163,13 +195,11 @@ export const ArticleListTitle = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 30px;
-  /* padding-top: 10px; */
-  /* border: 1px solid blue; */
+  white-space: nowrap;
 
   @media (max-width: 500px) {
-  width: 100%;
-  padding: 0;
+    width: 200px;
+    font-size: small;
   }
 `;
 
@@ -177,39 +207,43 @@ export const ArticleListTitle = styled.div`
 export const ArticleListContainer = styled.ul`
   display: flex;
   width: 970px;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
-  padding: 0;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
   background-color: white;
-  /* border: 1px solid red; */
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-bottom: 20px;
+  /* padding-inline-start: 40px;
+  padding-inline-end: 0px; */
   >.nodata {
     margin-top: 50px;
     width: 647px;
     text-align: center;
     font-weight: 800;
     font-size: 20px;
-    /* border: 1px solid red; */
   }
-
-  @media (max-width: 500px) {
+  @media screen and (max-width: 500px) {
     width: 100%;
-    padding: 0;
+    padding: 0px 0 20px 0;
+    > .nodata {
+      margin: 10px 0 0 0;
+      font-weight: 600;
+      font-size: 18px;
+    }
   }
 `;
 
 export const ArticleWrap = styled.li`
   width: 200px;
   height: 300px;
-  /* width: 100px;
-  height: 150px; */
-  margin: 50px 20px 10px 20px;
-  /* box-shadow:
-    rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset; */
+  margin: 15px;
   border-radius: 5px;
-    box-shadow: 
+  box-shadow: 
   rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
   rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
   rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
@@ -217,20 +251,11 @@ export const ArticleWrap = styled.li`
   rgba(0, 0, 0, 0.09) 0px 4px 2px, 
   rgba(0, 0, 0, 0.09) 0px 8px 4px, 
   rgba(0, 0, 0, 0.09) 0px 16px 8px;
-  
-  /* box-shadow: 
-  rgba(0, 0, 0, 0.4) 0px 2px 4px, 
-  rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
-  rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
-  /* box-shadow: -.5em 0 .1rem #adb5bd; */
-  /* box-shadow: 5px 5px 3px 1px rgba(0, 0, 0, .2); */
-  /* border: 1px solid black; */
 
   @media (max-width: 500px) {
-    width: 110px;
-    height: 140px;
-    margin: 27px;
-    /* box-shadow: -.3em 0 .1rem #adb5bd; */
+    width: 90px;
+    height: 120px;
+    margin: 20px 10px 0px 10px;
   }
 `;
 
@@ -239,5 +264,4 @@ export const Article = styled.img`
   height: 100%;
   border-radius: 5px;
   cursor: pointer;
-  
 `;

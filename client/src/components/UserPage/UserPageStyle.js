@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
 export const UserPageWholeContainer = styled.div`
-  /* padding-top: 50px; */
-  border: 1px solid #e9ecef;
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #e9ecef;
   overflow: hidden;
   position: relative;
   width: 100vw;
   /* background-color: whitesmoke; */
 
   @media (max-width: 500px) {
-    width: 100%;
+    width: 100vw;
     /* padding-top: 5px; */
   }  
 `;
@@ -20,34 +23,54 @@ export const UserPageContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 30px;
+  width: 970px;
+  margin: 0px;
+  
   /* border: 1px solid black; */
-
+  
   @media (max-width: 500px) {
     width: 100%;
   }
-`;
+  `;
 
 // UserInfo 영역
 export const UserInfoContainer = styled.div`
   display: flex;
-  width: 970px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 72%;
   height: 90px;
-  padding: 20px 0 20px 0;
+  margin: 0;
+  padding: 0 0 0 80px;
   background-color: white;
-  /* border: 1px solid skyblue; */
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  > .space {
+    margin: 0 10px 0 10px;
+    @media (max-width: 500px) {
+      display: none;
+    }
 
+  }
   @media (max-width: 500px) {
-    width: 100%;
-    padding: 0;
+    width: 355px;
   }
 `;
 
 export const UserImgSection = styled.div`
-  width: 90px;
-  height: 100%;
-  margin-left: 24px;
-  margin-right: 15px;
-  /* border: 1px solid black; */
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+
+  @media (max-width: 500px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 export const UserImage = styled.img`
@@ -63,6 +86,9 @@ export const UserInfoSection = styled.div`
   flex-wrap: nowrap;
   margin-left: 25px;
   /* border: 1px solid blue; */
+  @media (max-width: 500px) {
+    width: 70%;
+  }
 `;
 
 export const NickNameFollowSection = styled.div`
@@ -70,36 +96,44 @@ export const NickNameFollowSection = styled.div`
   width: 100% ;
   height: 55%;
   flex-direction: row;
-  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: start;
   margin-bottom: 5px;
   /* border: 1px solid red; */
   > .BtnContainer{
-    width: 40px;
+    width: 60px;
     /* border: 2px solid; */
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  > .BtnContainer div {
+    color: rgba(10, 120, 220, 1);
+  }
 `;
 
 export const NickName = styled.div`
   display: flex;
-  width: 100px;
-  font-size: 1.1rem;
+  font-size: 20px;
   font-weight: 900;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 0px;
+  margin: 0px;
   /* border: 1px solid green; */
 `;
 
 export const FollowContainer = styled.div`
   display: flex;
-  width: 180px;
+  width: 200px;
   flex-direction: row;
   margin-left: 5px;
   /* border: 1px solid orange; */
+  > strong {
+    width: 30%
+  }
 `;
 
 export const Follow = styled.div`
@@ -158,16 +192,35 @@ export const ArticleListTitle = styled.div`
 export const ArticleListContainer = styled.ul`
   display: flex;
   width: 970px;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
-  padding: 0;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
   background-color: white;
-  /* border: 1px solid red; */
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-bottom: 20px;
 
-  @media (max-width: 500px) {
+  /* padding-inline-start: 40px;
+  padding-inline-end: 0px; */
+  >.nodata {
+    margin-top: 50px;
+    width: 647px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 20px;
+  }
+  @media screen and (max-width: 500px) {
     width: 100%;
-    padding: 0;
+    padding: 0px;
+    > .nodata {
+      margin: 10px 0 0 0;
+      font-weight: 600;
+      font-size: 18px;
+    }
   }
 `;
 
@@ -202,7 +255,7 @@ export const ArticleWrap = styled.li`
   @media (max-width: 500px) {
     width: 110px;
     height: 140px;
-    margin: 27px;
+    margin: 20px 10px 0px 10px;
     /* box-shadow: -.3em 0 .1rem #adb5bd; */
   }
 `;
@@ -218,6 +271,7 @@ export const UserFollowIcon = styled.button`
 font-weight: 900;
 height: 20px;
 width: 60px;
+padding: 0px;
 border: 0;
 border-radius: 2px;
 font-size: 15px;
@@ -228,7 +282,7 @@ cursor: pointer;
   margin-top: 2px;
 }
 :hover {
-  font-size:20px;
+  font-size:16px;
 }
 @media screen and (max-width: 500px) {
   font-size: 10px;

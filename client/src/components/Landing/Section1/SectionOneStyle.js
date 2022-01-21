@@ -7,21 +7,28 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 
-
 export const SwiperContainer = styled.div`
   font-family: "Noto Sans KR",sans-serif;
   background-color: rgb(0,110,20, 0.2);
   width: 100vw;
   height: 100%;
   text-align: center;
+  
   > .title-container {
     margin-top: 130px;
+    @media screen and (max-width: 500px) {
+      margin-top: 150px;
+    }
   }
   > div > .subtitle {
     font-family: 'Do Hyeon', sans-serif;
     font-size: 20px;
     color: rgba(10, 95, 90, 0.6);
     margin: 40px 0 0 0;
+    @media screen and (max-width: 500px) {
+      margin: 0 0 0 0;
+      font-size: 15px;
+    }
   }
   > div > h1 {
     color: white;
@@ -31,14 +38,20 @@ export const SwiperContainer = styled.div`
     margin-top: 30px;
     margin-bottom: 30px;
     font-family: 'Black Han Sans', sans-serif;
+    @media screen and (max-width: 500px) {
+      font-size: 50px;
+      margin-bottom: 0px;
+    }
   }
-`
+`;
 export const StyledSwiper = styled(Swiper)`
   display: flex;
-  
+  align-items: center;
+  width: 100%;
   padding-top: 50px;
-  padding-bottom: 50px;
-`
+  padding-bottom: 200px;
+
+`;
 
 export const SwiperWrapper = styled.div`
   border: 2px solid blue;
@@ -74,9 +87,4 @@ export const SwiperWrapper = styled.div`
     height: 380px;
       object-fit: cover;
     }
-`
-
-
-
-
-
+`;
