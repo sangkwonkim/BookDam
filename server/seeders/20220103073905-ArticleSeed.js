@@ -11,7 +11,7 @@ module.exports = {
         book_Thumbnail: 'https://image.aladin.co.kr/product/19469/77/cover/s762635820_1.jpg',
         book_Publisher: '살림',
         sentence: '카야는 숨을 쉬는 촉촉한 흙에 가만히 손을 대었다. 그러자 습지가 카야의 어머니가 되었다',
-        comment: '모든 것을 맞춰주시는 어머니의 품 안이었기에 카야는 원하는 것을 얻을 수 있지 않았을까',
+        comment: '모든 것을 맞춰주시는 어머니의 품 안이었기에 카야는 원하는 것을 얻을 수 있지 않았을까..',
         createdAt: '2022-1-19',
         updatedAt: new Date()
       },
