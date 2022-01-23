@@ -2,11 +2,13 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+const helmet = require('helmet')
 
 const router = require('./router/index');
 const app = express();
-const port = 80;
+const port = 4000;
 
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
