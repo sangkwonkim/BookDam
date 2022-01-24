@@ -8,7 +8,6 @@ const router = require('./router/index');
 const app = express();
 const port = 80;
 
-app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -26,6 +25,9 @@ app.use(
   })
 );
 
+app.use(helmet())
+app.disable("x-powered-by");
+app.disable("etag");
 app.use('/', router);
 
 app.listen(port, () => {
