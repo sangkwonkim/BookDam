@@ -30,9 +30,9 @@ module.exports = {
     res.location('https://bookdam.link/feedPage');
     res.cookie('jwt', accessToken, {
       maxAge: 24 * 60 * 60 * 1000,
-      sameSite: 'none',
+      domain: '.bookdam.link',
       httpOnly: true,
-      secure: true
+      secure: true,
     }).status(200).json({ message: 'success', userInfo: userData });
   },
   logout: async (req, res) => { // test done
