@@ -27,7 +27,6 @@ app.use(
 
 app.use(helmet())
 app.disable("x-powered-by");
-app.disable("etag");
 app.use('/', router);
 
 app.listen(port, () => {
