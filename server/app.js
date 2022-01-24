@@ -6,7 +6,7 @@ const helmet = require('helmet');
 
 const router = require('./router/index');
 const app = express();
-const port = 4000;
+const port = 80;
 
 app.use(helmet());
 app.use(express.json());
@@ -29,5 +29,5 @@ app.use(
 app.use('/', router);
 
 app.listen(port, () => {
-  console.log(`Example app listening at https://server.bookdam.link:${port}`);
+  console.log(`북담 서버가 연결되었습니다.`);
 });
