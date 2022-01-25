@@ -26,7 +26,6 @@ app.use(
 );
 
 app.use(helmet())
-app.disable("x-powered-by");
 app.use('/', router);
 
 app.listen(port, () => {
