@@ -152,7 +152,7 @@ module.exports = {
     });
 
     if (!findUser) return res.status(400).json({ message: 'failure' });
-    const deleteArticle = await ArticleModel.destroy({ where: { user_id: id } });
+    const deleteArticle = await ArticleModel.destroy({ where: { user_Id: id } });
     const deleteFollow = await FollowModel.destroy({ where: { [Op.or]: [{ user_Id: id }, { follow_Id: id }] } });
     const deleteUser = await UserModel.destroy({ where: { id: id } });
     if (Number.isNaN(deleteArticle)) return res.status(400).json({ message: 'failure', error: deleteArticle });
