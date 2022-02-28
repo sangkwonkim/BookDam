@@ -51,7 +51,13 @@ module.exports = {
       // 쿠키 상으로 로그인은 되어있지만, db에서 유저의 정보가 없을 때의 처리
       // null일 경우 catch가 아닌 다음 코드로 진행되는 에러가 발생함
 
-      res.clearCookie('jwt').status(200).json({ message: '로그아웃 되었습니다.' });
+      res.clearCookie('jwt', {
+        path: '/',
+        sameSite: 'strict',
+        domain: '.bookdam.link',
+        httpOnly: true,
+        secure: true
+      }).status(200).json({ message: '로그아웃 되었습니다.' });
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
         return res.clearCookie('jwt', {
