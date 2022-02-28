@@ -55,6 +55,7 @@ module.exports = {
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
         return res.clearCookie('jwt', {
+          path: '/',
           sameSite: 'strict',
           domain: '.bookdam.link',
           httpOnly: true,
