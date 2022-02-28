@@ -54,7 +54,12 @@ module.exports = {
       res.clearCookie('jwt').status(200).json({ message: '로그아웃 되었습니다.' });
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
-        return res.clearCookie('jwt').status(200).json({ message: '로그아웃 되었습니다.' });
+        return res.clearCookie('jwt', {
+          sameSite: 'strict',
+          domain: '.bookdam.link',
+          httpOnly: true,
+          secure: true
+        }).status(200).json({ message: '로그아웃 되었습니다.' });
       }
       res.status(500).json({ message: '로그아웃에 실패했습니다.' });
     }
