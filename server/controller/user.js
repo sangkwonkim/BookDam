@@ -52,7 +52,6 @@ module.exports = {
       // null일 경우 catch가 아닌 다음 코드로 진행되는 에러가 발생함
 
       res.clearCookie('jwt', {
-        path: '/',
         sameSite: 'strict',
         domain: '.bookdam.link',
         httpOnly: true,
@@ -61,7 +60,6 @@ module.exports = {
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
         return res.clearCookie('jwt', {
-          path: '/',
           sameSite: 'strict',
           domain: '.bookdam.link',
           httpOnly: true,
