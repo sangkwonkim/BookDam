@@ -25,9 +25,9 @@ app.use(
   })
 );
 
-app.use(helmet())
+app.use(helmet());
 app.use('/', router);
 
 app.listen(port, () => {
-  console.log(`북담 서버가 연결되었습니다.`);
+  console.log('북담 서버가 연결되었습니다.');
 });
